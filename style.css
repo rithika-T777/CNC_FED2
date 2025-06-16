@@ -1,56 +1,91 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgb(223, 123, 123);
-    padding: 10px;
-    z-index: 1000;
+
+body {
+  font-family: sans-serif;
 }
+
+.navbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  background: linear-gradient(to right, #2e003e, #1c0032, #0a001f);
+  color: white;
+  padding: 15px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo {
+  font-family:dancing script;
+  font-size: 1.8rem;
+
+  font-weight: bold;
+}
+
 .menu-icon {
-    text-align: right;
-    font-size: 24px;
-    cursor: pointer;
-    display: none; /* Hidden by default */
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  justify-self: end;
 }
-.menu {
-    list-style: none;
-    padding: 0;
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: background 0.3s;
+}
+
+.nav-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+/* Responsive layout using CSS Grid */
+@media (max-width: 768px) {
+  .navbar {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
+  }
+
+  .menu-icon {
     display: flex;
-    gap: 20px;
-    transition: all 0.3s ease-in-out;
+    justify-self: end;
+  }
 
-}
-.menu li {
-    display: inline;
-}
+  .nav-menu {
+    grid-column: 1 / span 2;
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(to right, #2e003e, #1c0032, #0a001f);
+    padding: 10px 0;
+  }
 
-.menu a {
-    text-decoration: none;
-    padding: 10px;
-    color: black;
+  .nav-menu.show {
+    display: flex;
+  }
 }
-@media (max-width: 600px) {
-    .menu {
-        display: none; /* Hide menu by default */
-        flex-direction: column;
-        position: absolute;
-        background-color: white;
-        top: 30px;
-        left: 0;
-        right: 0;
-        padding: 10px;
-    }
- .menu-icon {
-        display: block; /* Show menu icon */
-    }
-
-    .menu.show {
-        display: flex; /* Show menu when toggled */
-    }
+.nav-menu li {
+  text-align: center;
 }
